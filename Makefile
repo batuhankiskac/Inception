@@ -17,5 +17,7 @@ clean:
 	@echo "Cleaning all Inception data..."
 	docker compose -f ./srcs/docker-compose.yml down --volumes --rmi all
 	docker system prune -af
+	@rm -rf /home/$(USER)/data/wordpress_files
+	@rm -rf /home/$(USER)/data/mariadb_data
 
 .PHONY: all up down logs clean

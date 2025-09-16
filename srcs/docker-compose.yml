@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  mariadb:
+    build:
+      context: ./requirements/mariadb
+    container_name: mariadb
+    env_file: ./.env
+    volumes:
+      - mariadb_data:/var/log/mysql
+    networks:
+      - inception
+    restart: on-failure
