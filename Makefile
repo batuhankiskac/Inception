@@ -1,23 +1,36 @@
+COMPOSE_FILE := ./srcs/docker-compose.yaml
+COMPOSE := docker compose -f $(COMPOSE_FILE)
+
+LOGIN ?= $(shell id -un)
+
+DATA_ROOT := /home/$(LOGIN)/data
+WP_DIR := $(DATA_ROOT)/wordpress_files
+DB_DIR := $(DATA_ROOT)/mariadb_data
+
+
 all: up
 
-up:
+prepare-dirs:
+	@mkdir -p "$(WP_DIR)"
+	@mkdir -p "$(DB_DIR)"
+
+up: prepare-dirs
 	@echo "Starting Inception project..."
-	@mkdir -p /home/$(USER)/data/wordpress_files
-	@mkdir -p /home/$(USER)/data/mariadb_data
-	docker compose -f ./srcs/docker-compose.yml up --build -d
+	$(COMPOSE) up --build -d
 
 down:
 	@echo "Stopping Inception project..."
-	docker compose -f ./srcs/docker-compose.yml down
+	$(COMPOSE) down
 
 logs:
-	docker compose -f ./srcs/docker-compose.yml logs -f
+	$(COMPOSE) logs -f
 
 clean:
 	@echo "Cleaning all Inception data..."
-	docker compose -f ./srcs/docker-compose.yml down --volumes --rmi all
+	$(COMPOSE) down --volumes --rmi all
 	docker system prune -af
-	@rm -rf /home/$(USER)/data/wordpress_files
-	@rm -rf /home/$(USER)/data/mariadb_data
+	@rm -rf "$(WP_DIR)" "$(DB_DIR)"
 
-.PHONY: all up down logs clean
+re: down up
+
+.PHONY: all up down logs clean re prepare-dirs
