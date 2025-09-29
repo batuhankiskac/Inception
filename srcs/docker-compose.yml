@@ -38,7 +38,7 @@ services:
     networks:
       - inception
     volumes:
-      - mariadb_data:/var/www/html
+      - wordpress_files:/var/www/html
     depends_on:
       - mariadb
     restart: unless-stopped
@@ -51,9 +51,9 @@ services:
     networks:
       - inception
     volumes:
-      - mariadb_data:/var/www/html:ro
+      - wordpress_files:/var/www/html:ro
     ports:
-      -"443:443"
+      - "443:443"
     depends_on:
       - wordpress
     restart: unless-stopped

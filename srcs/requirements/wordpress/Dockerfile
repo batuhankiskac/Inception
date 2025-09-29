@@ -14,8 +14,8 @@ RUN sed -ri 's#^;?daemonize\s*=.*#daemonize = no#' /etc/php/7.4/fpm/php-fpm.conf
 
 WORKDIR /var/www/html
 
-COPY tools/etrypoint.sh /usr/local/bin/etrypoint.sh
-RUN chmod +x /usr/local/bin/etrypoint.sh
+COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 9000
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
