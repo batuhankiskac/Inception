@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [! -f /var/www/wordpress/wp-config.php]; then
+if [ ! -f /var/www/wordpress/wp-config.php ]; then
 	wp core download --allow-root
 
 	wp config create --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER \

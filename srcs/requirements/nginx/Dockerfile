@@ -10,6 +10,6 @@ COPY tools/entrypoint.sh /var/www/entrypoint.sh
 
 RUN chmod +x /var/www/entrypoint.sh
 
-EXPOSE 433
+EXPOSE 443
 
 ENTRYPOINT [ "/var/www/entrypoint.sh" ]
