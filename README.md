@@ -1,5 +1,3 @@
-# Inception
-
 *This project has been created as part of the 42 curriculum by bkiskac.*
 
 ## Description
@@ -72,4 +70,4 @@ This project aims to teach about system administration by using Docker. Instead 
 - [MariaDB Docker Official Image](https://hub.docker.com/_/mariadb)
 
 ### AI Usage
-*AI tools were used to generate initial explanations and find useful documentation. Also they are used in testing in debugging*
+*AI tools were used to generate initial explanations and find useful documentation. Also they are used in testing in debugging.*
