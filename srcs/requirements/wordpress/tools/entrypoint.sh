@@ -12,4 +12,4 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 	wp user create $WP_USER $WP_USER_EMAIL --user_pass=$WP_USER_PASSWORD --role=author	 --allow-root
 fi
 
-exec /usr/sbin/php-fpm7.4 -F
+exec /usr/sbin/php-fpm8.2 -F
